@@ -1,0 +1,114 @@
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by AH0HA (http://jsbin.com/riranu/337/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+   <title>JavaScript Guessing Game<style id="jsbin-css">
+
+
+
+
+
+
+
+
+
+
+</style>
+</title>
+    <body onload="do_msg()">
+    <script id="jsbin-javascript">
+var target;            
+var guess_input_text;   
+var guess_input;      
+var finished = false;   
+var guesses = 0;
+
+
+//var msg_str;
+//msg_str = "I am thinking of one of these colors?\n";
+var my_color=["blue","cyan","gold","gray","green","magenta","orange","red","white","yellow"];
+     // msg_str += "blue,cyan,gold,gray,green,magenta,orange,red,white,yellow\n";
+      //msg_str += "What color am I thinking of ?\n";
+      //msg_str.concat("blue,cyan,gold,gray,green,magenta,orange,red,white,yellow\n")
+
+function do_msg() {
+    var random_number = Math.random() * my_color.length;
+    var random_number_integer = Math.floor(random_number);  
+    var mypickx= my_color[random_number_integer];
+    var msg_str = "I am thinking of one of these colors?\n";
+    msg_str = msg_str + my_color.toString()+"\n";
+    msg_str = msg_str + "What color am I thinking of ?\n";
+    //noprotect
+    while (!finished) {
+        guess_input_text = prompt(msg_str);
+        //guess_input = parseInt(guess_input_text);
+			if (guess_input_text === null) {
+    		break;
+			}
+        var guess_inputx = guess_input_text;
+      alert('mypickx='+mypickx);
+      alert('guess_inputx='+guess_inputx);
+        guesses += 1;   
+        finished = check_guess(guess_inputx,mypickx);
+    }
+
+}/*
+function do_game() {
+    var random_number = Math.random() * 100;
+    var random_number_integer = Math.floor(random_number);
+    target = random_number_integer;
+
+    while (!finished) {
+        guess_input_text = prompt("I am thinking of a number "+
+                                  "in the range 1 to 100.\n\n"+
+                                  "What is the number?");
+        guess_input = parseInt(guess_input_text);
+			if (guess_input_text === null) {
+    		break;
+			}
+        guesses += 1;   
+        finished = check_guess();
+    }
+}
+*/
+function check_guess(guess_input,mypick) {
+    //if (isNaN(guess_input)) {
+    if (my_color.indexOf(guess_input)==-1 ){  
+        alert("Sorry I dont recognize your color.\n\n" +
+              "Please try again.");
+        return false;
+    }
+    if ((guess_input < 1) || (guess_input > 100)) {
+        alert("Please enter an integer number in the range 1 to 100.");
+        return false;
+    }
+  
+    if (guess_input > mypick) {
+        alert("Sorry your guess is not correct!\n\nYour color is alphabetically higher than mine.\n\n Please try again");
+        return false;
+    }
+    if (guess_input < mypick) {
+        alert("Sorry your guess is not correct!\n\nYour color is alphabetically lower than mine.\n\n Please try again");
+        return false;
+    }
+    if (guess_input==mypick){
+    alert("Congradulations! You have guessed the color! " + target + 
+          ".\n\nIt took you " + guesses + 
+          " guesses to finish the game\n\nYou can see the color in the background");
+          //" guesses to finish the game\n\n");
+    changeBackground(mypick);
+    return true;   
+      
+    }
+}
+function changeBackground(color) {
+   document.body.style.background = color;
+}
+
+</script>
+</body>
