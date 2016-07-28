@@ -6,19 +6,19 @@
     <title>Sample Page</title>
     <!-- Your CSS -->
     <style>
-      
+
     </style>
   </head>
   <body>
     <!-- Your HTML -->
     <html>
-    
-    <style> 
+
+    <style>
     fieldset{background:lightyellow}
     fieldset{border:10px solid yellow}
     fieldset{margin-bottom:10px}
     fieldset{width:720px}
-    
+
     label{width:180px; vertical-align: top}
     .text {
         text-align: right;text-align: top ;text-align:right
@@ -37,30 +37,30 @@
      }
      .textarea{
       width:360px; height:5
-    } 
+    }
     label:hover { font-size:40px }
     </style>
     <body>
     <script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>
-    
+
     <form method="post" enctype="multipart/form-data"
     action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
-    
+
     	<fieldset>
         <legend>Your Face</legend>
     		<label for="faceFile">Your Image:</label>
         <input type="file" name="faceFile" multiple required><br><br>
         <label for="previewImg">Image Preview:</label>
-        <img id="preview" width="240" height="161" name="previewImg" >    
+        <img id="preview" width="240" height="161" name="previewImg" >
       </fieldset>
-      
+
     	<fieldset>
     		<legend>Your General Details</legend>
         <label for="Name">Name:</label>
         <input type="text" name="Name" required><br><br>
         <label for="gender">Gender:</label>
-        <input type="radio" name="gender" value="Male" >Male
-        <input type="radio" name="gender" value="Female">Female<br><br>
+        <input type="radio" name="gender" value="Male" required>Male
+        <input type="radio" name="gender" value="Female"required>Female<br><br>
         <label for="age">Age:</label>
        <input type="number" min="0" max="99" step="1" value="18" id="age" name="age" required><br><br>
        <label for="Birthday">Birthday:</label>
@@ -75,17 +75,17 @@
         <option value="rus">Russia</option>
         <option value="bra">Brazil</option>
         <option value="nul">No_Countty</option>
-    	</select>  
-    	</fieldset> 
-    
+    	</select>
+    	</fieldset>
+
     	<fieldset>
     		<legend>Your Indicators</legend><br><br>
           <label for="height">Height:</label>
       Short <input type="range" min="0" max="250" step="5" value="50" id="heightId" name="heightName"> Tall<br><br>
           <label for="salary">Salary:</label>
-      Poor <input type="range" min="0" max="250" step="5" value="50" id="SalaryId" name="SalaryName"> Rich<br><br>  
-    	</fieldset> 
-    
+      Poor <input type="range" min="0" max="250" step="5" value="50" id="SalaryId" name="SalaryName"> Rich<br><br>
+    	</fieldset>
+
     	<fieldset>
     		<legend>Your Contact Information</legend><br><br>
     		Email:<input type="email" name="email"> <br><br>
@@ -102,7 +102,7 @@
     <!-- Your dependent libraries -->
     <!-- Your scripts -->
     <script>
-      
+
     </script>
   </body>
 </html>
