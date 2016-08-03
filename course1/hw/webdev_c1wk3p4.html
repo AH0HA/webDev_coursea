@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by AH0HA (http://jsbin.com/yewilo/14/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <title>Sample Page</title>
+
+  <style id="jsbin-css">
+      div {
+          position:absolute;
+          width:500px; height:500px
+      } 
+
+img {
+            position:absolute;
+}
+      #rightSide { left: 500px; 
+                   border-left: 1px solid black }
+
+</style>
+</head>
+  <body>
+    <!-- Your HTML -->
+    <!DOCTYPE html>
+    <html>
+    <body onload="genface(5)">
+    <h1>Matching Game</h1>
+    <p>Click on the extra smiling face on the left</p>
+    <div id="leftSide"></div> 
+    <div id="rightSide"></div> 
+    </body>
+    </html>
+    <!-- Your dependent libraries -->
+    <!-- Your scripts -->
+    <script>
+      var numberOfFaces = 5;
+      var faceRate = 5;
+      function genface(){
+
+        
+          var leftDoc=document.getElementById('leftSide');
+
+        for (j=1;j<=numberOfFaces;j++){
+          var elem = document.createElement("img");
+          elem.src = 'http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png';
+          leftDoc.appendChild(elem);
+          elem.style.left=Math.floor((Math.random() * 400) + 0)+ "px";
+          elem.style.top=Math.floor((Math.random() * 400) + 0)+ "px";
+
+      }//end for loop numface
+        
+      var rightDoc =
+            document.getElementById("rightSide");  
+          var leftSideImages = leftDoc.cloneNode(true);
+          leftSideImages.removeChild(leftSideImages.lastChild);
+         rightDoc.appendChild(leftSideImages);
+        
+  leftDoc.lastChild.onclick=
+    function nextLevel(event){
+
+        event.stopPropagation();
+    
+        while (leftDoc.hasChildNodes()) {
+            leftDoc.removeChild(leftDoc.lastChild);
+        }
+    
+       while (rightDoc.hasChildNodes()) {
+            rightDoc.removeChild(rightDoc.lastChild);
+        }
+        numberOfFaces += faceRate;
+
+        genface();
+
+
+};        
+        
+    var theBody =
+           document.getElementsByTagName("body")[0];    
+        
+      theBody.onclick = function gameOver() {
+
+        alert("Game Over!");
+
+
+
+          theBody.onclick = null;
+
+          leftDoc.lastChild.onclick = null;
+
+
+};         
+        
+      }//end genface
+      
+   
+      
+     
+    </script>
+  </body>
+</html>
